@@ -1,7 +1,7 @@
 import bs4
 import requests
-import shutil
 import time
+import os
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
@@ -80,14 +80,17 @@ def download_image(url, filename):
             f.write(r.content)
 
 
-if __name__ == '__main__':
-    # gathers images of apples and oranges and stores it in the photos/ directory
+def main():
+    """gathers images of apples and oranges and stores it in the photos/ directory"""
+    if not os.path.exists('photos'):
+        os.makedirs('photos')
     apple = 'apple fruit'
     orange = 'orange fruit'
     get_image_links(apple)
     download_images(apple)
-    orange_start = time.time()
     get_image_links(orange)
     download_images(orange)
-    
 
+
+if __name__ == '__main__':
+    main()
