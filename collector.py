@@ -86,9 +86,9 @@ def main():
         os.makedirs('photos')
     apple = 'apple fruit'
     orange = 'orange fruit'
-    get_image_links(apple)
+    # get_image_links(apple)
     download_images(apple)
-    get_image_links(orange)
+    # get_image_links(orange)
     download_images(orange)
 
 

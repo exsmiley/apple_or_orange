@@ -11,3 +11,5 @@ This is a project to help me learn tensorflow. It tries to classify pictures of 
 ### Results
 
 Let's see how this goes! :smirk:
+
+Final model gets 96% test accuracy! :smirk:
