@@ -8,6 +8,7 @@ from keras.utils import np_utils
 from keras.models import load_model
 from keras.optimizers import SGD
 from sklearn.utils import shuffle
+from image_preparation import resize_image
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 import tensorflow as tf
 import random
@@ -92,6 +93,17 @@ def eval_model():
     score = model.evaluate(np.array(X), np.array(y))[1]
     print("Overall Accuracy: %.2f%%" % (score*100))
 
+def is_apple_or_orange(fname):
+    model = load_model('last.h5')
+    resize_image(fname, 'temp.jpg')
+    img = load_image('temp.jpg')
+
+    pred = np.argmax(model.predict(np.array([img]))[0])
+    fruit = 'apple' if pred == 0 else 'orange'
+    return fruit
+
+
 if __name__ == '__main__':
     # train_model()
-    eval_model()
+    # eval_model()
+    print is_apple_or_orange('portomarul.jpg')
